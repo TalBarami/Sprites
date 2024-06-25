@@ -12,7 +12,7 @@ def cut_image(i, j):
     imgwidth, imgheight = img.size 
     N_width = imgwidth / width
     N_height = imgheight / height
-    print i, j, j * N_width + i
+    print(i, j, j * N_width + i)
     box = (i*width, j*height, (i+1)*width, (j+1)*height)
     a = img.crop(box)
     a.convert('RGB')
@@ -33,7 +33,7 @@ if __name__ == '__main__':
     
     # then merge all!
     f = Image.new('RGBA', img_list[0].size, 'black')
-    for i in xrange(len(img_list)):
+    for i in range(len(img_list)):
         f = Image.alpha_composite(f, img_list[i].convert('RGBA'))    
     # save image
     f.save('0.png')

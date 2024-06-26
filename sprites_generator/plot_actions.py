@@ -29,7 +29,7 @@ if __name__ == '__main__':
         #print path+filename
         img_list.append(Image.open(path + filename))
     # shoes
-    img_list.append(Image.open('shoes/1.png'))
+    img_list.append(Image.open('../shoes/1.png'))
     
     # then merge all!
     f = Image.new('RGBA', img_list[0].size, 'black')

@@ -4,7 +4,7 @@ import numpy as np
 import imageio
 from scipy import ndimage
 
-def gen_char(body, bottom, top, hair):
+def gen_char(body, bottom, top, hair, out_path):
 
     np.random.seed(seed)
 
@@ -18,7 +18,7 @@ def gen_char(body, bottom, top, hair):
         #print path+filename
         img_list.append(Image.open(path + filename))
     # shoes
-    img_list.append(Image.open('shoes/1.png'))
+    img_list.append(Image.open('../shoes/1.png'))
 
     # then merge all!
     f = Image.new('RGBA', img_list[0].size, 'black')
@@ -35,7 +35,7 @@ def gen_char(body, bottom, top, hair):
     imgwidth, imgheight = img.size
     N_width = imgwidth // width
     N_height = imgheight // height
-    path = 'frames/'
+    path = out_path
     if not os.path.exists(path):
         os.makedirs(path)
 
@@ -181,7 +181,7 @@ if __name__ == '__main__':
         top = int(seed / n_class)
         hair = int(np.mod(seed, n_class))
 
-        gen_char(body, bottom, top, hair)
+        gen_char(body, bottom, top, hair, out_path=r'/cs/cs_groups/azencot_group/datasets/SMD/sprites/frames')
         if (seed+1) % 100 == 0:
             print('generate %d/%d sequences' % (seed+1, n_class**4))
 

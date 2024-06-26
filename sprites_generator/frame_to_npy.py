@@ -2,6 +2,7 @@ import numpy as np
 # from scipy import ndimage
 import imageio
 import os
+from os import path as osp
 
 num_direction = {'front': 0, 'left': 1, 'right':2, 'back': 3}
 n_class = 6
@@ -35,9 +36,7 @@ def load_seq(path, labels, action, direction):
     return np.asarray(seq), np.asarray(list_attr, dtype='f'), \
            np.asarray(list_di, dtype='f')
 
-def save_npy():
-    load_path = 'frames/'
-    save_path = 'npy/'
+def save_npy(load_path, save_path):
     if not os.path.exists(save_path):
         os.makedirs(save_path)
 
@@ -98,5 +97,6 @@ def save_npy():
             print('saved ' + save_path + di_npy_file_name + '_test.npy')
 
 if __name__ == '__main__':
-    save_npy()
+    root = r'/cs/cs_groups/azencot_group/datasets/SMD/sprites'
+    save_npy(osp.join(root, 'frames'), osp.join(root, 'npy'))
 

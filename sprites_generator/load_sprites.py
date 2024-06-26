@@ -1,12 +1,12 @@
 import os, time
 import numpy as np
-from matplotlib import pyplot as plt
+from os import path as osp
 
-def sprites_act(path, seed=0, return_labels = False):
+def sprites_act(sprites_dir, seed=0, return_labels = False):
     directions = ['front', 'left', 'right']
     actions = ['walk', 'spellcard', 'slash']
     start = time.time()
-    path = path + 'npy/'
+    path = osp.join(sprites_dir, 'npy')
     X_train = []
     X_test = []
     if return_labels:
